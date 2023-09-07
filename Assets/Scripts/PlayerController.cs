@@ -2,32 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
-    private CharacterController characterController;
-    public float walkSpeed = 3f;
-    public float runSpeed = 8f;
-    public float crouchSpeed = 1f;
-    private float currentSpeed = 3f;
-
-    public float gravity = -9.81f;
-    public float jumpForce = 5f;
-
-    private Vector3 velocity;
-    private bool isGrounded;
-
-    public Transform groundCheck;
-    public float groundDistance = 0.1f;
-    public LayerMask groundMask;
-
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
+        private CharacterController characterController;
+        public float walkSpeed = 3f;
+        public float runSpeed = 8f;
+        public float crouchSpeed = 1f;
+        private float currentSpeed = 3f;
+
+        public float gravity = -9.81f;
+        public float jumpForce = 5f;
+
+        private Vector3 velocity;
+        private bool isGrounded;
+
+        public Transform groundCheck;
+        public float groundDistance = 0.1f;
+        public LayerMask groundMask;
+
+        void Start()
+      {
         characterController = GetComponent<CharacterController>();
         currentSpeed = walkSpeed;
-    }
+      }
 
-    void Update()
-    {
+        void Update()
+      {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             currentSpeed = runSpeed;
@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
+    }
     }
 }
 
